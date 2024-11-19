@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supriya Kumari</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../script.js" defer></script>
+</head>
+
+<body class="bg-gradient-to-br from-pink-100 via-purple-50 to-teal-100 text-gray-800">
+    <!-- Hero Section -->
+    <header class="relative h-screen">
+        <div id="carousel" class="relative h-full overflow-hidden">
+            <!-- Slides -->
+            <div class="carousel-slide absolute w-full h-full transition-transform duration-700 ease-in-out flex">
+                <!-- Slide 1 -->
+                <div class="flex-shrink-0 w-full h-full relative overflow-hidden">
+                    <img src="../assets/imgs/carousel1.jpeg" alt="Slide 1"
+                        class="w-full h-full object-cover brightness-110">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center items-center text-center text-white">
+                        <h1 class="text-5xl md:text-7xl font-extrabold drop-shadow-lg">Supriya Kumari</h1>
+                        <p class="text-2xl md:text-3xl mt-4 drop-shadow-md">Vibrant. Bold. Unique.</p>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="flex-shrink-0 w-full h-full relative overflow-hidden">
+                    <img src="../assets/imgs/carousel2.jpeg" alt="Slide 2" class="w-full h-full object-cover">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-center items-center text-center text-white">
+                        <h1 class="text-5xl md:text-7xl font-extrabold drop-shadow-lg">Innovative Styles</h1>
+                        <p class="text-2xl md:text-3xl mt-4 drop-shadow-md">Let Your Personality Shine.</p>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="flex-shrink-0 w-full h-full relative overflow-hidden">
+                    <img src="../assets/imgs/carousel3.jpg" alt="Slide 3" class="w-full h-full object-cover">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-20 flex flex-col justify-center items-center text-center text-white">
+                        <h1 class="text-5xl md:text-7xl font-extrabold drop-shadow-lg">Timeless Designs</h1>
+                        <p class="text-2xl md:text-3xl mt-4 drop-shadow-md">Crafting for Every Occasion.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Dots -->
+            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3">
+                <button
+                    class="carousel-dot w-4 h-4 rounded-full bg-white opacity-50 hover:opacity-100 focus:opacity-100"></button>
+                <button
+                    class="carousel-dot w-4 h-4 rounded-full bg-white opacity-50 hover:opacity-100 focus:opacity-100"></button>
+                <button
+                    class="carousel-dot w-4 h-4 rounded-full bg-white opacity-50 hover:opacity-100 focus:opacity-100"></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="py-20 px-8 md:px-20 bg-gradient-to-r from-purple-50 to-teal-50">
+        <div class="text-center">
+            <h2 class="text-4xl font-extrabold text-pink-600 mb-6">About Me</h2>
+            <p class="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto text-gray-700">
+                As a passionate fashion designer, I specialize in blending bold colors, modern aesthetics, and unique
+                patterns to create memorable designs that empower individuality.
+            </p>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="py-20 px-8 md:px-20">
+        <div class="text-center mb-10">
+            <h2 class="text-4xl font-extrabold text-teal-600">Portfolio</h2>
+            <p class="text-lg text-gray-600">Discover my latest creations</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Portfolio Item 1 -->
+            <div class="relative group overflow-hidden rounded-lg shadow-lg">
+                <img src="../assets/imgs/modelling.jpeg" alt="Modelling"
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div
+                    class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-60 transition-opacity duration-500 flex items-center justify-center text-white">
+                    <p class="text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <a href="./comingsoon.html">Modelling</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Portfolio Item 2 -->
+            <div class="relative group overflow-hidden rounded-lg shadow-lg">
+                <img src="../assets/imgs/illustrations.jpeg" alt="Illustrations"
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div
+                    class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-60 transition-opacity duration-500 flex items-center justify-center text-white">
+                    <p class="text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <a href="./comingsoon.html">Illustrations</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Portfolio Item 3 -->
+            <div class="relative group overflow-hidden rounded-lg shadow-lg">
+                <img src="../assets/imgs/dress_making.jpeg" alt="Dress Making"
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div
+                    class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-60 transition-opacity duration-500 flex items-center justify-center text-white">
+                    <p class="text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <a href="./comingsoon.html">Dress Making</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Portfolio Item 4 -->
+            <div class="relative group overflow-hidden rounded-lg shadow-lg">
+                <img src="../assets/imgs/embroidery.jpg" alt="Embroidery"
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div
+                    class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-60 transition-opacity duration-500 flex items-center justify-center text-white">
+                    <p class="text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <a href="./comingsoon.html">Embroidery</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section class="py-20 px-8 md:px-20 bg-gradient-to-l from-pink-50 to-teal-50">
+        <div class="text-center">
+            <h2 class="text-4xl font-extrabold text-yellow-500 mb-6">Get In Touch</h2>
+            <p class="text-lg md:text-xl text-gray-700 mb-8">
+                Let's create something extraordinary together! Reach out for collaborations or inquiries.
+            </p>
+            <a href="./contact.html"><button
+                    class="px-8 py-3 bg-pink-500 text-white font-bold text-lg rounded-full shadow-md hover:bg-pink-600 transition">
+                    Contact Me
+                </button></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-6 bg-gradient-to-r from-teal-600 to-pink-600 text-white text-center">
+        <p>&copy; 2024 Supriya Kumari. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
