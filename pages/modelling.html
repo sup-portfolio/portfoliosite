@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelling</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styling for the collage grid */
+        .collage {
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+
+        .collage img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s, filter 0.3s;
+        }
+
+        .collage img:hover {
+            transform: scale(1.05);
+            filter: brightness(1.2);
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-teal-50 to-purple-50 min-h-screen text-gray-800">
+    <!-- Navbar -->
+    <nav class="bg-teal-600 text-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold">Fashion Portfolio</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="./index.html" class="hover:text-teal-200">Home</a>
+                <a href="./contact.html" class="hover:text-teal-200">Contact</a>
+                <a href="./comingsoon.html" class="hover:text-teal-200">Dress Making</a>
+                <a href="./comingsoon.html" class="hover:text-teal-200">Illustrations</a>
+                <a href="./comingsoon.html" class="hover:text-teal-200">Embroidery</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="text-center py-8 bg-gradient-to-r from-teal-100 to-purple-100 shadow-md">
+        <h1 class="text-5xl font-extrabold text-teal-700">Modelling</h1>
+        <p class="text-lg text-gray-600 mt-2">Showcasing the finest moments in style.</p>
+    </header>
+
+    <!-- Carousel Section -->
+    <section class="py-8 px-4 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <div class="relative overflow-hidden rounded-lg shadow-lg">
+                <!-- Carousel Images -->
+                <div id="carousel" class="relative flex transition-transform duration-700 ease-in-out w-[300%]">
+                    <img src="https://via.placeholder.com/800x400" alt="Model 1" class="w-1/3 flex-shrink-0">
+                    <img src="https://via.placeholder.com/800x400" alt="Model 2" class="w-1/3 flex-shrink-0">
+                    <img src="https://via.placeholder.com/800x400" alt="Model 3" class="w-1/3 flex-shrink-0">
+                </div>
+                <!-- Navigation Dots -->
+                <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                    <button class="dot w-3 h-3 rounded-full bg-gray-400"></button>
+                    <button class="dot w-3 h-3 rounded-full bg-gray-400"></button>
+                    <button class="dot w-3 h-3 rounded-full bg-gray-400"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Collage Section -->
+    <section class="py-12 bg-gradient-to-r from-teal-100 to-purple-100">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-teal-600 text-center mb-6">Photo Collage</h2>
+            <div id="collage" class="collage grid grid-cols-2 sm:grid-cols-3 gap-4"></div>
+        </div>
+
+        <!-- Popup Modal -->
+        <div id="popupModal"
+            class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center hidden transition-opacity">
+            <div class="relative max-w-3xl w-full p-4 bg-white rounded-lg shadow-lg overflow-hidden">
+                <!-- Close Button -->
+                <button id="closeModal"
+                    class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-3xl font-bold">
+                    &times;
+                </button>
+                <!-- Image Display -->
+                <div class="flex items-center justify-center">
+                    <img id="modalImage" src="" alt="Popup Image"
+                        class="w-full h-auto object-contain max-h-[80vh] rounded-md shadow-lg">
+                </div>
+                <!-- Navigation Buttons -->
+                <button id="prevImage"
+                    class="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-teal-600 text-white rounded-full p-3 text-lg hover:bg-teal-700 shadow-lg">
+                    &lt;
+                </button>
+                <button id="nextImage"
+                    class="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-teal-600 text-white rounded-full p-3 text-lg hover:bg-teal-700 shadow-lg">
+                    &gt;
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="py-6 bg-gray-800 text-center text-gray-300">
+        <p>&copy; 2024 Supriya Kumari. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Carousel Logic
+        const carousel = document.getElementById('carousel');
+        const images = carousel.children;
+        const totalImages = images.length;
+        const dots = document.querySelectorAll('.dot');
+
+        let currentIndex = 0;
+        const intervalTime = 3000; // Change slides every 3 seconds
+
+        function updateCarousel() {
+            // Slide by index * (100 / totalImages) to match the flex layout
+            carousel.style.transform = `translateX(-${currentIndex * (100 / totalImages)}%)`;
+
+            // Update dot indicators
+            dots.forEach((dot, index) => {
+                dot.classList.remove('bg-gray-600', 'scale-125');
+                if (index === currentIndex) {
+                    dot.classList.add('bg-gray-600', 'scale-125'); // Highlight active dot
+                }
+            });
+        }
+
+        // Auto-slide every intervalTime
+        function autoSlide() {
+            currentIndex = (currentIndex + 1) % totalImages; // Loop back to the first slide
+            updateCarousel();
+        }
+
+        let slideInterval = setInterval(autoSlide, intervalTime);
+
+        // Allow manual control via dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                clearInterval(slideInterval); // Stop auto-sliding when manually controlled
+                currentIndex = index;
+                updateCarousel();
+                slideInterval = setInterval(autoSlide, intervalTime); // Restart auto-slide
+            });
+        });
+
+        // Initial update for dots
+        updateCarousel();
+
+
+        // Collage Logic (Dynamic Grid)
+        const collage = document.getElementById('collage');
+        const modal = document.getElementById('popupModal');
+        const modalImage = document.getElementById('modalImage');
+        const closeModal = document.getElementById('closeModal');
+        const prevImage = document.getElementById('prevImage');
+        const nextImage = document.getElementById('nextImage');
+
+        const photoUrls = [
+            '../assets/imgs/carousel1.jpeg',
+            '../assets/imgs/carousel2.jpeg',
+            '../assets/imgs/carousel3.jpg',
+            '../assets/imgs/dress_making.jpeg',
+            '../assets/imgs/embroidery.jpg',
+            '../assets/imgs/illustrations.jpeg',
+            '../assets/imgs/modelling.jpeg'
+        ];
+
+        // Populate collage dynamically
+        photoUrls.forEach((url, cIndex) => {
+            const img = document.createElement('img');
+            img.src = url;
+            img.alt = `Model Collage Image ${cIndex + 1}`;
+            img.dataset.index = cIndex; // Store the image index for navigation
+            img.classList.add('cursor-pointer', 'rounded-lg', 'shadow-md', 'hover:shadow-lg', 'transition-shadow');
+            collage.appendChild(img);
+        });
+
+        // Current image index in the modal
+        let cIndex = 0;
+
+        // Function to show the modal with a specific image
+        function showModal(index) {
+            cIndex = index;
+            modalImage.src = photoUrls[cIndex];
+            modal.classList.remove('hidden');
+            modal.classList.add('opacity-100'); // Fade-in effect
+        }
+
+        // Close the modal
+        closeModal.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+
+        // Navigate to the next image
+        nextImage.addEventListener('click', () => {
+            cIndex = (cIndex + 1) % photoUrls.length;
+            showModal(cIndex);
+        });
+
+        // Navigate to the previous image
+        prevImage.addEventListener('click', () => {
+            cIndex = (cIndex - 1 + photoUrls.length) % photoUrls.length;
+            showModal(cIndex);
+        });
+
+        // Add click event to each collage image
+        collage.addEventListener('click', (e) => {
+            if (e.target.tagName === 'IMG') {
+                const index = parseInt(e.target.dataset.index, 10);
+                showModal(index);
+            }
+        });
+
+        // Close modal on clicking outside the modal content
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>

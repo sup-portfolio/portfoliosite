@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Illustrations | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gradient-to-r from-teal-100 to-purple-100">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-teal-600 text-white py-4 shadow-md">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold">My Portfolio</a>
+            <ul class="flex space-x-6">
+                <li><a href="./index.html" class="hover:text-teal-300">Home</a></li>
+                <li><a href="./comingsoon.html" class="hover:text-teal-300">Dress Making</a></li>
+                <li><a href="./modelling.html" class="hover:text-teal-300">Modelling</a></li>
+                <li><a href="./contact.html" class="hover:text-teal-300">Contact</a></li>
+                <li><a href="./comingsoon.html" class="hover:text-teal-300">Embroidery</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Illustration Gallery Section -->
+    <section class="py-12 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-teal-600 text-center mb-8">Illustrations Gallery</h2>
+            <div id="gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Gallery Images will be populated dynamically here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery of Illustrations -->
+    <div id="gallery" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 p-4">
+        <!-- Dynamically generated images will go here -->
+    </div>
+
+    <!-- Modal for Viewing Image -->
+    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-70 hidden flex items-center justify-center z-50">
+        <div class="relative max-w-3xl w-full bg-white p-4 rounded-lg shadow-lg">
+            <!-- Close Button -->
+            <button id="closeModal"
+                class="absolute top-4 right-4 text-black text-3xl font-bold opacity-75 hover:opacity-100 transition-opacity duration-300 z-60">
+                &times;
+            </button>
+
+            <!-- Full Image Display -->
+            <div class="flex items-center justify-center">
+                <img id="modalImage" src="" alt="Full Image"
+                    class="w-full h-auto object-contain max-h-[80vh] rounded-md shadow-lg transition-transform duration-500 transform hover:scale-105">
+            </div>
+
+            <!-- Navigation Buttons -->
+            <button id="prevImage"
+                class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-teal-600 text-white rounded-full p-3 hover:bg-teal-700 focus:outline-none transition duration-300 ease-in-out">
+                &lt;
+            </button>
+            <button id="nextImage"
+                class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-teal-600 text-white rounded-full p-3 hover:bg-teal-700 focus:outline-none transition duration-300 ease-in-out">
+                &gt;
+            </button>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-teal-600 text-white py-4 mt-12">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <p>&copy; 2024 My Portfolio</p>
+            <ul class="flex space-x-6">
+                <li><a href="#" class="hover:text-teal-300"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="#" class="hover:text-teal-300"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#" class="hover:text-teal-300"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+
+        const gallery = document.getElementById('gallery');
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const closeModal = document.getElementById('closeModal');
+        const prevImage = document.getElementById('prevImage');
+        const nextImage = document.getElementById('nextImage');
+
+        // Image URLs for the Illustrations Gallery
+        const illustrations = [
+            'https://placehold.co/300x400/FF6F61/FFFFFF?text=Illustration+1',
+            'https://placehold.co/300x400/4CAF50/FFFFFF?text=Illustration+2',
+            'https://placehold.co/300x400/2196F3/FFFFFF?text=Illustration+3',
+            'https://placehold.co/300x400/9C27B0/FFFFFF?text=Illustration+4',
+            'https://placehold.co/300x400/FF9800/FFFFFF?text=Illustration+5',
+            'https://placehold.co/300x400/00BCD4/FFFFFF?text=Illustration+6',
+            'https://placehold.co/300x400/9E9E9E/FFFFFF?text=Illustration+7'
+        ];
+
+        // Dynamically populate the gallery
+        illustrations.forEach((url, index) => {
+            const img = document.createElement('img');
+            img.src = url;
+            img.alt = `Illustration ${index + 1}`;
+            img.dataset.index = index;
+            img.classList.add('cursor-pointer', 'rounded-lg', 'hover:opacity-80', 'transition-opacity');
+            gallery.appendChild(img);
+        });
+
+        // Current image index in the modal
+        let currentIndex = 0;
+
+        // Show the modal with the selected image
+        function showModal(index) {
+            currentIndex = index;
+            modalImage.src = illustrations[currentIndex];
+            modal.classList.remove('hidden');
+        }
+
+        // Close the modal
+        closeModal.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+
+        // Navigate to the next image
+        nextImage.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % illustrations.length;
+            showModal(currentIndex);
+        });
+
+        // Navigate to the previous image
+        prevImage.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + illustrations.length) % illustrations.length;
+            showModal(currentIndex);
+        });
+
+        // Open the modal when an image is clicked
+        gallery.addEventListener('click', (e) => {
+            if (e.target.tagName === 'IMG') {
+                const index = parseInt(e.target.dataset.index, 10);
+                showModal(index);
+            }
+        });
+
+        // Close modal on clicking outside the image
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+            }
+        });
+
+
+
+    </script>
+</body>
+
+</html>
