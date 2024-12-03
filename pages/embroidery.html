@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Illustrations</title>
+    <title>Embroidery</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
@@ -20,22 +20,22 @@
                 <li><a href="./dress_making.html" class="hover:text-teal-300">Dress Making</a></li>
                 <li><a href="./modelling.html" class="hover:text-teal-300">Modelling</a></li>
                 <li><a href="./contact.html" class="hover:text-teal-300">Contact</a></li>
-                <li><a href="./embroidery.html" class="hover:text-teal-300">Embroidery</a></li>
+                <li><a href="./illustrations.html" class="hover:text-teal-300">Illustrations</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Illustration Gallery Section -->
+    <!-- Embroidery Gallery Section -->
     <section class="py-12 px-6">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl font-bold text-teal-600 text-center mb-8">Illustrations Gallery</h2>
+            <h2 class="text-3xl font-bold text-teal-600 text-center mb-8">Embroidery Gallery</h2>
             <div id="gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <!-- Gallery Images will be populated dynamically here -->
             </div>
         </div>
     </section>
 
-    <!-- Gallery of Illustrations -->
+    <!-- Gallery of Embroidery -->
     <div id="gallery" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 p-4">
         <!-- Dynamically generated images will go here -->
     </div>
@@ -67,10 +67,6 @@
         </div>
     </div>
 
-
-
-
-
     <!-- Footer -->
     <footer class="py-6 bg-gray-800 text-center text-gray-300">
         <p>&copy; 2024 Supriya Kumari. All rights reserved.</p>
@@ -85,22 +81,22 @@
         const prevImage = document.getElementById('prevImage');
         const nextImage = document.getElementById('nextImage');
 
-        // Image URLs for the Illustrations Gallery
-        const illustrations = [
-            'https://placehold.co/300x400/FF6F61/FFFFFF?text=Illustration+1',
-            'https://placehold.co/300x400/4CAF50/FFFFFF?text=Illustration+2',
-            'https://placehold.co/300x400/2196F3/FFFFFF?text=Illustration+3',
-            'https://placehold.co/300x400/9C27B0/FFFFFF?text=Illustration+4',
-            'https://placehold.co/300x400/FF9800/FFFFFF?text=Illustration+5',
-            'https://placehold.co/300x400/00BCD4/FFFFFF?text=Illustration+6',
-            'https://placehold.co/300x400/9E9E9E/FFFFFF?text=Illustration+7'
+        // Image URLs for the Embroidery Gallery
+        const embroideryImages = [
+            'https://placehold.co/300x400/FF6F61/FFFFFF?text=Embroidery+1',
+            'https://placehold.co/300x400/4CAF50/FFFFFF?text=Embroidery+2',
+            'https://placehold.co/300x400/2196F3/FFFFFF?text=Embroidery+3',
+            'https://placehold.co/300x400/9C27B0/FFFFFF?text=Embroidery+4',
+            'https://placehold.co/300x400/FF9800/FFFFFF?text=Embroidery+5',
+            'https://placehold.co/300x400/00BCD4/FFFFFF?text=Embroidery+6',
+            'https://placehold.co/300x400/9E9E9E/FFFFFF?text=Embroidery+7'
         ];
 
         // Dynamically populate the gallery
-        illustrations.forEach((url, index) => {
+        embroideryImages.forEach((url, index) => {
             const img = document.createElement('img');
             img.src = url;
-            img.alt = `Illustration ${index + 1}`;
+            img.alt = `Embroidery ${index + 1}`;
             img.dataset.index = index;
             img.classList.add('cursor-pointer', 'rounded-lg', 'hover:opacity-80', 'transition-opacity');
             gallery.appendChild(img);
@@ -112,7 +108,7 @@
         // Show the modal with the selected image
         function showModal(index) {
             currentIndex = index;
-            modalImage.src = illustrations[currentIndex];
+            modalImage.src = embroideryImages[currentIndex];
             modal.classList.remove('hidden');
         }
 
@@ -123,13 +119,13 @@
 
         // Navigate to the next image
         nextImage.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % illustrations.length;
+            currentIndex = (currentIndex + 1) % embroideryImages.length;
             showModal(currentIndex);
         });
 
         // Navigate to the previous image
         prevImage.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + illustrations.length) % illustrations.length;
+            currentIndex = (currentIndex - 1 + embroideryImages.length) % embroideryImages.length;
             showModal(currentIndex);
         });
 
@@ -147,8 +143,6 @@
                 modal.classList.add('hidden');
             }
         });
-
-
 
     </script>
 </body>
