@@ -1,0 +1,36 @@
+# Node.js dependencies
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Build output
+/dist
+/build
+
+# Temporary files
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# npm package lock file (optional)
+package-lock.json
+
+# Ignore coverage folder (if you use testing tools that generate this)
+coverage/
+
+# Ignore the public directory if you're using it for static files but don't want to commit
+/public/
+
+# Ignore build or production folder (if you have one)
+/build/
